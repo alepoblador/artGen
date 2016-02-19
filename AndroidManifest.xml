@@ -3,7 +3,7 @@
     package="bb.bb.artgen">
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="21"
         android:targetSdkVersion="23" />
 
     <uses-permission android:name="android.permission.CAMERA" />

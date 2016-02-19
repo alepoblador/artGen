@@ -25,6 +25,8 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
     }
 
+    // TODO: set preview size for full screen
+
     public void surfaceCreated(SurfaceHolder holder) {
         // the surface has been created, now tell the camera where to draw the preview
         try {

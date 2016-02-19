@@ -94,6 +94,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initialize() {
+        // initialize camera
+        if (!hasCamera(myContext)) {
+            Toast toast = Toast.makeText(myContext, "No camera detected!", Toast.LENGTH_LONG);
+            toast.show();
+            finish();
+        }
+        if (mCamera == null) {
+            mCamera = Camera.open(findBackFacingCamera());
+        }
+
         // place mPreview in FrameLayout
         mPreview = new CameraPreview(myContext, mCamera);
         cameraPreview = (FrameLayout) findViewById(R.id.camera_preview);
@@ -106,6 +116,10 @@ public class MainActivity extends AppCompatActivity {
         // set switchCamera listener
         switchCamera = (FloatingActionButton) findViewById(R.id.button_switch);
         switchCamera.setOnClickListener(switchCameraListener);
+
+        // display live image
+        mPicture = savePictureCallback();
+        mPreview.refreshCamera(mCamera);
     }
 
     // get access to camera and display live image data here
