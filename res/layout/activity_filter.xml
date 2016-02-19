@@ -5,7 +5,7 @@
     android:layout_height="fill_parent">
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/button_back"
+        android:id="@+id/button_filter_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|top"
@@ -29,83 +29,89 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="5dp">
+            android:layout_margin="@dimen/menu_margin">
 
-            <LinearLayout
-                android:id="@+id/option_picasso"
+            <LinearLayout android:id="@+id/option_picasso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="5dp">
+                android:layout_margin="@dimen/menu_margin">
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="100dp" />
+                    android:layout_width="@dimen/menu_image_width"
+                    android:layout_height="@dimen/menu_image_height"
+                    android:src="@drawable/picasso"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Picasso"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:layout_margin="@dimen/menu_margin" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/option_monet"
+            <LinearLayout android:id="@+id/option_monet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="5dp">
+                android:layout_margin="@dimen/menu_margin">
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="100dp" />
+                    android:layout_width="@dimen/menu_image_width"
+                    android:layout_height="@dimen/menu_image_height"
+                    android:src="@drawable/monet" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Monet"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:layout_margin="@dimen/menu_margin" />
             </LinearLayout>
 
-            <LinearLayout
+            <LinearLayout android:id="@+id/option_vangogh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="5dp" >
+                android:layout_margin="@dimen/menu_margin" >
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="100dp" />
+                    android:layout_width="@dimen/menu_image_width"
+                    android:layout_height="@dimen/menu_image_height"
+                    android:src="@drawable/vangogh"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Van Gogh"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:layout_margin="@dimen/menu_margin" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="5dp" >
+                android:layout_margin="@dimen/menu_margin" >
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="100dp"/>
+                    android:layout_width="@dimen/menu_image_width"
+                    android:layout_height="@dimen/menu_image_height"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Klimt"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:layout_margin="@dimen/menu_margin" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="5dp">
+                android:layout_margin="@dimen/menu_margin">
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="100dp" />
+                    android:layout_width="@dimen/menu_image_width"
+                    android:layout_height="@dimen/menu_image_height" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Etc"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:layout_margin="@dimen/menu_margin"/>
             </LinearLayout>
 
         </LinearLayout>

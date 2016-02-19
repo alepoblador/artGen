@@ -4,6 +4,14 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|top"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_popup_sync" />
+
     <!-- This is the container for the camera preview screen -->
     <FrameLayout android:id="@+id/camera_preview"
         android:layout_width="fill_parent"
@@ -13,10 +21,10 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/button_capture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_gravity="center|bottom"
-        android:layout_margin="@dimen/fab_margin"
+        android:layout_margin="35dp"
         android:src="@android:drawable/ic_menu_camera" />
 
 

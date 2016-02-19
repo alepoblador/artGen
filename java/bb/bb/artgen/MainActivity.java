@@ -8,11 +8,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
 import android.hardware.Camera.PictureCallback;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -58,6 +60,39 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    OnClickListener switchCameraListener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            int numberOfCameras = Camera.getNumberOfCameras();
+            if (numberOfCameras > 1) {
+                releaseCamera();
+                switchCamera();
+            } else {
+                Toast toast = Toast.makeText(myContext, "Sorry, your phone has only one camera!", Toast.LENGTH_LONG);
+                toast.show();
+            }
+        }
+    };
+
+    public void switchCamera() {
+        if (cameraFront) {
+            int cameraId = findBackFacingCamera();
+            if (cameraId >= 0) {
+                mCamera = Camera.open(cameraId);
+                mPicture = savePictureCallback();
+                mPreview.refreshCamera(mCamera);
+            }
+        }
+         else {
+            int cameraId = findFrontFacingCamera();
+            if (cameraId >= 0) {
+                mCamera = Camera.open(cameraId);
+                mPicture = savePictureCallback();
+                mPreview.refreshCamera(mCamera);
+            }
+        }
+    }
+
     public void initialize() {
         // place mPreview in FrameLayout
         mPreview = new CameraPreview(myContext, mCamera);
@@ -67,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
         // set capture listener
         capture = (FloatingActionButton) findViewById(R.id.button_capture);
         capture.setOnClickListener(captureListener);
+
+        // set switchCamera listener
+        switchCamera = (FloatingActionButton) findViewById(R.id.button_switch);
+        switchCamera.setOnClickListener(switchCameraListener);
     }
 
     // get access to camera and display live image data here
@@ -157,8 +196,12 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-                // TODO: change to move to filter activity
-                mPreview.refreshCamera(mCamera);
+                // send image path to filter screen and start activity
+                releaseCamera();
+                Intent filterScreen = new Intent(getApplicationContext(), FilterActivity.class);
+                filterScreen.putExtra("picturePath", pictureFile.getAbsolutePath());
+
+                startActivity(filterScreen);
             }
         };
         return picture;
@@ -167,7 +210,8 @@ public class MainActivity extends AppCompatActivity {
     // make folder and file for picture
     private static File getOutputMediaFile() {
         // make a new directory inside "sdcard" folder
-        File mediaStorageDir = new File("/sdcard/", "ArtGen");
+        String sdcard = Environment.getExternalStorageDirectory().getPath();
+        File mediaStorageDir = new File(sdcard, "ArtGen");
 
         // if "ArtGen" folder does not exist
         if ( !mediaStorageDir.exists() ) {
